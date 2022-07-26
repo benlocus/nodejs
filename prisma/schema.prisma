@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model dates {
+  date_id       Int           @id @default(autoincrement()) @db.UnsignedInt
+  change_date   DateTime?     @db.Date
+  locationof    String?       @db.VarChar(255)
+  asset_id      Int           @db.UnsignedInt
+  optical_heads optical_heads @relation(fields: [asset_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "dates_ibfk_1")
+
+  @@index([asset_id], map: "asset_id")
+}
+
+model optical_heads {
+  id    Int     @id @default(autoincrement()) @db.UnsignedInt
+  name  String? @db.VarChar(255)
+  type  String? @db.VarChar(255)
+  dates dates[]
+}
+
+model user {
+  id     String  @db.VarChar(255) @unique
+  email  String  @db.VarChar(255)
+}

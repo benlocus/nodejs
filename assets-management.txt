@@ -1,0 +1,32 @@
+TO-DO
+1. create all needed API's
+2. create authentification based on 0Auth2 Google login information from Bubble
+    - node-jsonwebtoken {
+        1: user logs in on bubble, which triggers an API workflow
+        2: server generates crypto key for the user
+        3: user gets JWT set as a data field for them
+        4: user uses JWT to authenticate API calls
+    }
+3. Build interface (based on the apple file explorer)
+    - search and command based on VS Pallete
+    - stacked editor/information viewer
+
+locations as a separate table
+- shows location and ID
+- breadcrumbs
+
+comments in the change table
+
+export to excel
+
+-----------
+
+API's needed
+- <> GET -> access each tpye of asset (for the list view ) -> navigation will take the form of tabs at the top of the window
+- <> GET -> once an item is clicked it will need to display all of the dates and locations for the item -> this will need variable selecting by the asset type and ID/name
+- <> PUSH -> update an asset's data, will push back the asset and the date/location information, creating or updating as needed (the location table)
+- <> PUSH -> update an asset's information (could be combined with the above API)
+- <> POST -> post a new date entry (could be combined with the above call)
+- <> POST -> post a new asset
+- <> DELETE -> delete a date
+- <> DELETE -> deleta an asset
