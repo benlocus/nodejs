@@ -16,3 +16,16 @@ tailwindcss
 --
 if the date is null, check if the previous was something, if so, post null
 if the date is something, check if it is the same as the previous thing
+
+server {
+  listen 80;
+  server_name 34.125.86.118;
+
+  location / {
+    proxy_pass "http://127.0.0.1:8080";
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_cache_bypass $http_upgrade;
+  }
+}
