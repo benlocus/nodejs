@@ -2,6 +2,8 @@
 import express from 'express';
 const app = express();
 
+import cors from 'cors';
+
 const PORT = process.env.PORT || 8080;
 
 // imports the neccessary prisma objects
@@ -14,6 +16,9 @@ const prisma = new PrismaClient();
 
 // allows express to parse JSON objects recieved
 app.use( express.json() )
+app.use(cors({
+    origin: '*'
+}))
 
 // initializes the app on the given port
 app.listen(PORT, () => console.log(`Listening on ${PORT}...`));
@@ -140,7 +145,7 @@ app.post('/dates/post', async (req, res) => {
         data: {
             change_date: new Date(date),
             locationof: location,
-            optical_heads: { connect: {id: asset_id}}
+            optical_heads: { connect: {id: asset_id} }
         },
     })
 
