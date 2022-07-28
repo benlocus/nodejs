@@ -25,6 +25,7 @@ app.listen(PORT, () => console.log(`Listening on ${PORT}...`));
 app.get('/assets', async (req, res) => {
     const getAssets = await prisma.optical_heads.findMany({
         select: {
+            id: true,
             name: true,
             type: true
         }
@@ -49,6 +50,7 @@ app.get('/:asset', async (req, res) => {
             type: asset
         },
         select: {
+            id: true,
             name: true,
             type: true
         }
@@ -71,10 +73,12 @@ app.get('/asset/:id', async (req, res) => {
     const getAsset = await prisma.optical_heads.findMany({
         where: { id: Number(req.params.id) },
         select: {
+            id: true,
             name: true,
             type: true,
             dates: {
                 select: {
+                    date_id: true,
                     change_date: true,
                     locationof: true
                 },

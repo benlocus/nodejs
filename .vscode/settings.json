@@ -11,6 +11,19 @@
             "driver": "MySQL",
             "name": "ben-assets",
             "connectString": "mysql://root:Elmhirst1!@localhost:3306/assets"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "172.23.144.7",
+            "port": 3306,
+            "askForPassword": true,
+            "driver": "MySQL",
+            "name": "google-db",
+            "database": "assets",
+            "username": "root"
         }
     ]
 }
